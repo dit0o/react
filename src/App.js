@@ -4,18 +4,16 @@ import './App.css';
 
 
 function App() {
-  const [value,setValue]=useState(0)
-  const count=useRef(0)
-  useEffect(()=>{
-    count.current=count.current+1;
-  });
+ const inputElement=useRef();
+const btnclicked=()=>{
+  
+  inputElement.current.style.background="red"
+}
  
   return (
     <>
-     <button onClick={()=>{setValue(prev=>prev-1)}}>-1</button>
-     <h1>{value}</h1>
-     <button onClick={()=>{setValue(prev=>prev+1)}}>+1</button>
-     <h1>Render Count:{count.current}</h1>
+    <input type='text' ref={inputElement}/>
+    <button onClick={btnclicked}>click here</button>
     </>
   );
 }
