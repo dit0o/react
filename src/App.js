@@ -1,18 +1,34 @@
-
+import React, { useState } from 'react'
 import './App.css';
-import ProfileCard from "./Profiles"
-import profiles from './data'
+
 
 
 function App() {
+// const [car,setCar]=useState({
+//   brand:"Benz",
+//   model:"Roma",
+//   year:"2025",
+//   color:"red"
+// });
+
+// const changeColor=()=>{
+//   setCar((prev)=>{
+// return {...prev,color:"blue"}
+//   })
+ //}
+ const [count,setCount]=useState(0)
+ const increaseCount=(()=>{
+  setCount(count+1)
+ })
   return (
     <div className="app">
-      <h1>User Profiles</h1>
-      <div className="card-container">
-        {profiles.map((profile) => (
-          <ProfileCard key={profile.id} profile={profile} />
-        ))}
-      </div>
+     {/* <h1>My {car.brand}</h1> 
+     <p>It is a {car.color} {car.model} from {car.year}</p>
+     <button onClick={changeColor}>
+      Blue
+     </button> */}
+     <h1>Count:0</h1>
+     <button onClick={increaseCount}>Increase</button>
     </div>
   );
 }
