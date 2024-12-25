@@ -1,35 +1,21 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './App.css';
 
 
 
 function App() {
-// const [car,setCar]=useState({
-//   brand:"Benz",
-//   model:"Roma",
-//   year:"2025",
-//   color:"red"
-// });
-
-// const changeColor=()=>{
-//   setCar((prev)=>{
-// return {...prev,color:"blue"}
-//   })
- //}
- const [count,setCount]=useState(0)
- const increaseCount=(()=>{
-  setCount(count+1)
- })
+  const [count,setCount]=useState(0)
+  
+  useEffect(()=>{
+    setTimeout(()=>{
+      setCount(count=>count+1)
+   
+    },2000)
+  },[count])
   return (
-    <div className="app">
-     {/* <h1>My {car.brand}</h1> 
-     <p>It is a {car.color} {car.model} from {car.year}</p>
-     <button onClick={changeColor}>
-      Blue
-     </button> */}
-     <h1>Count:0</h1>
-     <button onClick={increaseCount}>Increase</button>
-    </div>
+    <>
+      <h1>I ve rendered {count} times!</h1>
+    </>
   );
 }
 
