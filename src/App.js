@@ -1,20 +1,39 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import React, {  useReducer, useState } from 'react'
 import './App.css';
 
-import Header from './components/Header';
-import Profile from './components/Profile';
-import Footer from './components/Footer';
+
 
 function App() {
+  const initialState={count:0}
+  const reducer=(state,action)=>{
+    switch(action.type){
+      case 'increase': {
+        return {count:state.count+1}
+      }
+case 'decrease':{
+  return {count:state.count-1}
+}
+default:{
+  return state
+}
+    }
+   
+  }
+  const[state,dispatch]=useReducer(reducer,initialState)
   
 
- 
+
   return (
     <>
-  <Profile/>
-  <Footer/>
+      <h1>{state.count}</h1>
+      <button onClick={() => {
+        dispatch({type:'increase'})
+      }}>Increase</button>
+      <button onClick={() => {
+       dispatch({type:'decrease'})
+      }}>Decrease</button>
     </>
   );
-} 
+}
 
 export default App;
