@@ -1,25 +1,22 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import './App.css';
 
-
+import Header from './components/Header';
 
 function App() {
-  const [number, setNumber] = useState(0)
+  
 
   const [counter, setCounter] = useState(0)
-  function cubeNum(num) {
-    console.log("calculation done")
-    return Math.pow(num, 3)
-  }
-  const result = useMemo(()=>{return cubeNum(number)},[number])
+  const newFunction=useCallback((counter)=>{
+
+  },[counter])
   return (
     <>
-      <input type='number' value={number} onChange={(e) => { setNumber(e.target.value) }} />
-      <h1>Cube Of the number:{result}</h1>
-      <button onClick={() => {
-        setCounter(counter + 1)
-      }}>countet++</button>
+    <Header newFunction={newFunction}/>
       <h1>Counte:{counter}</h1>
+      <button onClick={()=>{
+        setCounter(prev=>prev+1)
+      }}>click</button>
     </>
   );
 }
