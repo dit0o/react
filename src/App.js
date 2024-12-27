@@ -1,23 +1,27 @@
-import React, { useEffect, useLayoutEffect } from 'react'
+import React from 'react'
 import './App.css';
+import useLocalStorage from './hooks/useLocalStorage';
 
 
 
 function App() {
-  useEffect(()=>{
-    console.log("useEffect")
-  },[])
-  useLayoutEffect(()=>{
-    console.log("useLayoutEffect")
-  },[])
- 
+  const[name,setName]=useLocalStorage('username','')
+  const[Id,setId]=useLocalStorage('useid','')
+// const[name,setName]=useState(
+//   localStorage.getItem('username')?
+//   localStorage.getItem('username'):''
+// )
+//  useEffect(()=>{
+//   localStorage.setItem('username',name)
+//  },[name])
   return (
     <>
-    <h2>Test message</h2>
-    {Array(400).fill('').map((item,index)=>(
-<li key={index}>
-  {Math.pow(Math.random,10)}</li>
-    ))}
+   <input type='text' placeholder='Enter yout name' value={name} onChange={(e)=>setName(e.target.value)}/>
+   <h2>Hello,{name}!</h2>
+   <input type='text' placeholder='Enter yout id' value={Id} onChange={(e)=>setId(e.target.value)}/>
+   <h2>Hello,{Id}!</h2>
+
+   
     </>
   );
 }
